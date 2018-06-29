@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example</title>
+    <link rel="stylesheet" href="dist/proudsmart-message-box.css">
+    <style>
+        .container {
+            display: flex;
+        }
+
+        textarea {
+            display: block;
+            padding: 9.5px;
+            margin: 0 0 10px;
+            font-size: 13px;
+            line-height: 1.42857143;
+            color: #333;
+            word-break: break-all;
+            word-wrap: break-word;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: Consolas;
+        }
+    </style>
+    <script src="dist/proudsmart-message-box.js"></script>
+    <script>
+      window.onload = function () {
+        document.getElementById('btn').addEventListener('click', function () {
+          eval(document.getElementById('fn').value)
+        });
+      }
+    </script>
+</head>
+<body>
+<div class="container">
+    <div>
+    <textarea id="fn" rows="20" cols="80">
+var mb = new _MessageBox();
+mb.prompt({
+    message: '请输入名字：',
+    placeholder: '输入名字',
+    reg: /^\w+$/,
+    confirmFn: function (value) {
+      console.log(value);
+      console.log(this);
+    },
+    cancelFn: function () {
+      console.log(this);
+    }
+});
+    </textarea>
+    </div>
+
+    <div style="padding-left: 30px;">
+        <button id="btn">运行代码</button>
+        <p style="margin: 0;font-size: 12px;color: red;">修改左侧代码，然后点击按钮运行</p>
+    </div>
+</div>
+
+
+</body>
+</html>
